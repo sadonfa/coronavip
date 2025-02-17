@@ -1,0 +1,437 @@
+/* ESTILOS GENERALES */
+
+:root {
+  --color-background: #121212;
+  --color-primary: #cb7a00;
+  --color-secundary: #dddddd;
+  --color-text: #ffffff;
+  --color-text-dark: #222;
+
+  --color-border: #333;
+  --color-sombra: #464545;
+}
+
+/* ESTRUCTURA GENERAL */
+html {
+  font-size: 10px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Montserrat";
+  font-size: 1.5rem;
+  background-color: var(--color-background);
+  background-image: url(../img/Traslados-desde-los-aeropuertos.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: sepia(90%);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "LeagueSpartan Bold";
+  color: var(--color-primary);
+}
+
+.layout {
+  position: relative;
+  display: inline-block;
+  overflow: auto;
+  width: 85%;
+  height: 85vh;
+  box-shadow: 0px 0px 1.5rem var(--color-border);
+  /* background-color: var(--color-secundary); */
+  backdrop-filter: blur(2rem);
+  border-radius: 4rem;
+  padding: 1rem 4rem;
+}
+
+.layout__header {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  /* border: 1px solid red; */
+}
+
+.header__logo {
+  width: 10rem;
+  height: 10rem;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+  /* width: 0%; */
+  color: var(--color-text-dark);
+}
+
+.layout__menu-toggle {
+  z-index: 9999;
+  display: block;
+  position: absolute;
+  right: 3.5rem;
+  top: 3rem;
+  width: 4.2rem;
+  height: 4.2rem;
+  line-height: 4.3rem;
+  text-align: center;
+  font-size: 2.5rem;
+  /* border-radius: 3rem; */
+  color: var(--color-primary);
+  /* background-color: var(--color-primary); */
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.menu-toggle__icon {
+  color: var(--color-principal);
+  display: block;
+  position: absolute;
+  top: 25%;
+  left: 28%;
+  transition: all 300ms ease-in-out;
+}
+
+.fa-bars {
+  opacity: 1;
+}
+
+.fa-xmark {
+  opacity: 0;
+}
+
+.header__menu {
+  display: none;
+  position: absolute;
+  width: 340px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  overflow: auto;
+  z-index: 1;
+  background-color: var(--color-secundary);
+  opacity: 0;
+}
+
+.header__menu--visible {
+  display: block;
+  width: 20%;
+  margin-right: 0;
+  opacity: 1;
+}
+
+.header__menu--hidden {
+  margin-right: -100%;
+  opacity: 0;
+}
+
+.menu__item {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  list-style: none;
+}
+
+.menu__item--top {
+  margin-top: 9rem;
+}
+
+.menu__link {
+  color: var(--color-text-dark);
+  font-family: "Roboto Black";
+  /* font-weight: bold; */
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  transition: all 250ms;
+}
+
+.menu__link:hover {
+  color: var(--color-primary);
+}
+
+.active {
+  /* border-bottom: 3px solid var(--color-primary); */
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.layout__home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  /* margin: 0 auto; */
+}
+
+.home__info {
+  width: 45%;
+  text-align: center;
+  /* border: 1px solid red; */
+}
+
+.home__image {
+  width: 55%;
+  /* border: 1px solid red; */
+}
+
+.info__title {
+  margin-top: -2rem;
+  font-size: 7rem;
+  text-shadow: 0 0 0.2rem var(--color-sombra);
+}
+
+.info__subtitle {
+  color: var(--color-text-dark);
+  font-size: 3rem;
+  text-shadow: 0 0 0.2rem var(--color-sombra);
+}
+
+.layout__form {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  margin: 0 auto;
+}
+
+.form__cont {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  /* padding-bottom: 0.5rem; */
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  background-color: var(--color-text);
+  opacity: 0.8;
+  border-radius: 1rem;
+  color: var(--color-text-dark);
+}
+
+.form__button {
+  padding: 1.3rem 2rem;
+  /* border: 2px solid var(--color-border); */
+  border-radius: 1rem;
+  border: none !important;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: "Montserrat Bold";
+  text-transform: uppercase;
+  background-color: var(--color-text-dark);
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.form__button:hover {
+  background-color: var(--color-background);
+  border: 2px solid var(--color-primary);
+  color: var(--color-text);
+}
+
+.form__label {
+  margin-bottom: 0.4rem;
+  font-family: "LeagueSpartan Bold";
+  font-size: 1.1rem;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+}
+
+.form__label--select {
+  color: var(--color-secundary);
+  font-size: 0.8rem;
+  margin-left: 1rem;
+}
+
+.form__input,
+.form__ruta {
+  outline: none;
+  background-color: transparent !important;
+  padding: 0.5rem 1rem;
+  color: var(--color-text-dark);
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 0.2rem solid var(--color-secundary) !important;
+}
+
+.form__input {
+  width: 90%;
+}
+
+.form__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  /* border: 1px solid red; */
+}
+
+.form__select {
+  /* display: flex;
+  justify-content: space-between; */
+  width: 40%;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+.select__options {
+  margin-top: 1rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--color-text-dark);
+  border-radius: 1rem;
+  border: none;
+  /* color: var(--color-text-dark); */
+}
+
+.select__options:hover {
+  cursor: pointer;
+  background-color: var(--color-background);
+}
+
+.form__input[type="date"]::-webkit-calendar-picker-indicator,
+.form__input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  /* border-radius: 4px;
+  margin-right: 2px; */
+  /* opacity: 0.9; */
+  /* filter: invert(0.9); */
+  color: var(--color-text-dark);
+}
+
+.form__input::placeholder {
+  color: var(--color-text-dark);
+}
+
+.dark__vehiculos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehiculos__content {
+  width: 50%;
+}
+
+.vehiculos__vehiculo {
+  width: 100%;
+  margin-bottom: 3rem;
+  background-color: var(--color-background);
+  opacity: 0.9;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 1rem var(--color-sombra);
+  border-radius: 2rem;
+}
+
+.vehiculo__box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+}
+
+.vehiculo__car-n {
+  display: flex;
+  flex-direction: column;
+}
+
+.vehiculo__car-n,
+.vehiculo__car-i,
+.vehiculo__car-d {
+  margin: 0 0.5rem;
+}
+
+.vehiculo__subtitle {
+  font-size: 1.6rem;
+  color: var(--color-text);
+  text-transform: capitalize;
+}
+
+.vehiculo__car-i {
+  width: 35%;
+  /* border: 1px solid red; */
+}
+
+.vehiculo__image {
+  width: 100%;
+}
+
+.vehiculo__car-d {
+  width: 10%;
+}
+
+.vehiculo__car-n {
+  width: 35%;
+}
+
+.map-info {
+  width: 35%;
+}
+
+#map,
+#mapret,
+#mapida {
+  /* float: none; */
+  height: 30.5rem;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 0.7rem var(--color-sombra);
+}
+
+#mapida {
+  border: 1px solid blue;
+}
+
+/* PAGINA DE DETALLES */
+
+.layout__detail {
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 1px solid red; */
+}
+
+.detail__info {
+  width: 40%;
+  margin-top: 1rem;
+  /* border: 1px solid red; */
+}
+
+.detail__map {
+  width: 45%;
+  margin-top: 1rem;
+}
+
+.detail__data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail__btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.layout__title {
+  font-family: "Roboto Black" !important;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -4rem;
+  margin-bottom: 2rem;
+}

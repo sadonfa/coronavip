@@ -1,0 +1,156 @@
+{% extends 'layouts/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  {% load static %}
+  {% load humanize %}
+  
+      <h2 class="layout__title">{{ title }} # {{ booking.get_id_formateado }}</h2>
+
+  <div class="layout__booking-info">
+    <!--  <img src="{% static 'img/logo.png' %}" alt="Coronatours" /> -->
+    <table class="booking-info__table">
+      <tr>
+        <td class="booking-info__title">Nombre</td>
+        <td class="booking-info__data">{{ booking.name }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">Celular </td>
+        <td class="booking-info__data">{{ booking.phone }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title booking-info__title--bb">Correo</td>
+        <td class="booking-info__data booking-info__data--bb">{{ booking.mail }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">Fecha de recogida </td>
+        <td class="booking-info__data">{{ booking.checkin }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">Hora de recogida</td>
+        <td class="booking-info__data">{{ booking.hora }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">Origen</td>
+        <td class="booking-info__data">{{ booking.origen }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">Destino </td>
+        <td class="booking-info__data">{{ booking.destino }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">Aerolinea</td>
+        <td class="booking-info__data">{{ booking.air }}</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title booking-info__title--bb">Numero de vuelo</td>
+        <td class="booking-info__data booking-info__data--bb">{{ booking.nair }}</td>
+      </tr>
+      {% if recorrido == "idayvuelta" %}
+        <tr>
+          <td class="det-division"></td>
+          <td class="det-division"></td>
+        </tr>
+        <tr>
+          <td class="booking-info__title">Fecha de recogida</td>
+          <td class="booking-info__data">{{ booking.date_ret }}</td>
+        </tr>
+        <tr>
+          <td class="booking-info__title">Hora de recogida</td>
+          <td class="booking-info__data">{{ booking.hora_ret }}</td>
+        </tr>
+        <tr>
+          <td class="booking-info__title">Origen Regreso</td>
+          <td class="det-celda">{{ booking.origen_ret }}</td>
+        </tr>
+        <tr>
+          <td class="booking-info__title">Destino Regreso</td>
+          <td class="booking-info__data">{{ booking.destino_ret }}</td>
+        </tr>
+        <tr>
+          <td class="booking-info__title">Aerolinea Regreso</td>
+          <td class="booking-info__data">{{ booking.air_r }}</td>
+        </tr>
+        <tr>
+          <td class="booking-info__title booking-info__title--bb">Numero de Vuelo Regreso</td>
+          <td class="booking-info__data booking-info__data--bb">{{ booking.nair_r }}</td>
+        </tr>
+      {% endif %}
+      <tr>
+        <td class="det-division"></td>
+        <td class="det-division"></td>
+      </tr>
+      {% if opcion == 'transporte' %}
+        <tr>
+          <td class="booking-info__title">Vehiculo </td>
+          <td class="booking-info__data">{{ booking.tour }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td class="booking-info__title">Hotel: {{ opcion }}</td>
+          <td class="booking-info__data">{{ booking.hotel }}</td>
+        </tr>
+        <tr>
+          <td class="booking-info__title">Tours</td>
+          <td class="booking-info__data">{{ booking.tour }}</td>
+        </tr>
+      {% endif %}
+      <tr>
+        <td class="booking-info__title booking-info__title--bb">Cant Adultos</td>
+        <td class="booking-info__data booking-info__data--bb">{{ booking.adults }}</td>
+      </tr>
+      
+      <tr>
+        <td class="booking-info__title">valor adultos </td>
+        <td class="booking-info__data">$ {{ booking.cash|intcomma }} COP</td>
+      </tr>
+      <tr>
+        <td class="booking-info__title">valor adicional</td>
+        <td class="booking-info__data"></td>
+      </tr> 
+      <tr>
+        <td class="booking-info__title"> valor Total</td>
+        <td class="booking-info__data">$ {{ booking.total|intcomma }} COP</td>
+      </tr>
+    </table>
+    <!-- data-public-key="pub_test_g7FnpJvJYnwAsFW6wwPlwo5fTZSIjRKM" -->
+    <!--  data-public-key="pub_prod_9Q0j3Er5qtTcXx4X2cPd4b3wTFoyElX0" -->
+    <form>
+      <script src="https://checkout.wompi.co/widget.js"
+              data-render="button"
+              data-public-key="pub_test_g7FnpJvJYnwAsFW6wwPlwo5fTZSIjRKM"
+              data-currency="COP"
+              data-amount-in-cents="{{ booking.total }}00"
+              data-reference="CV{{ booking.get_id_formateado }}"
+              data-redirect-url="http://localhost:8000/respuesta/"
+              ></script>
+    </form>
+    {% comment %} 00132
+    vuelo 
+    in 
+    out {% endcomment %}
+    {% comment %} <a href="#" class="btn">Corregir Datos</a>
+  <script>
+    var checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents: {{ booking.total }}+"00",
+        reference: '{{ booking.get_id_formateado }}',
+        publicKey: 'pub_test_g7FnpJvJYnwAsFW6wwPlwo5fTZSIjRKM',
+        redirectUrl: 'http://localhost:8000', // Opcional
+        taxInCents: { // Opcional
+          vat: 1900,
+          consumption: 800
+        }
+
+      })
+</script>
+  <button class="btn" onclick="checkout.open(function ( result ) { var transaction = result.transaction console.log('Transaction ID: ', transaction.redirectUrl + transaction.id) console.log('Transaction object: ', transaction) transaction.redirectUrl + transaction.id })">
+    Pagar
+  </button>
+
+  <button class="btn" onclick="checkout.open(function ( result ) { var transaction = result.transaction console.log('Transaction ID: ', transaction.redirectUrl + transaction.id) console.log('Transaction object: ', transaction) transaction.redirectUrl + transaction.id })">
+    Pagar
+  </button>
+    {% endcomment %}
+  </div>
+  {% comment %} amountInCents: "{{ booking.total }}" + "00", {% endcomment %}
+{% endblock %}

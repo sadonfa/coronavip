@@ -1,0 +1,149 @@
+{% extends "layouts/base.html" %}
+{% block title %}
+  {{ title }}
+{% endblock title %}
+{% load humanize %}
+{% block content %}     
+  <h1 class="layout__title">{{ title }}</h1>
+  <form class="form-booking"
+        action="{% url 'detail_booking' det_booking.id %}"
+        method="post">
+    {% csrf_token %}
+    <input type="hidden" name="date" value="{{ det_booking.date }}" readonly />
+    <input type="hidden" name="time" value="{{ det_booking.time }}" readonly />
+    <input type="hidden" name="id" value="{{ det_booking.id }}" readonly />
+    <input type="hidden" name="origen" value="{{ det_booking.origen }}" readonly />
+    <input type="hidden"
+           name="recorrido"
+           value="{{ det_booking.recorrido }}"
+           readonly>
+    <input type="hidden"
+           name="destino"
+           value="{{ det_booking.destino }}"
+           readonly />
+    <input type="hidden" name="opcion" value="{{ opcion }}" readonly />
+    <input type="hidden"
+           name="date_ret"
+           value="{{ det_booking.date_ret }}"
+           readonly />
+    <input type="hidden"
+           name="time_ret"
+           value="{{ det_booking.time_ret }}"
+           readonly />
+    <input type="hidden"
+           name="origen_ret"
+           value="{{ det_booking.origen_ret }}"
+           readonly />
+    <input type="hidden"
+           name="destino_ret"
+           value="{{ det_booking.destino_ret }}"
+           readonly />
+    <div class="box-form-booking">
+      <div class="box-form-item-one">
+        <label class="sub-title-3">nombre completo</label>
+        <input type="text" name="name" required />
+      </div>
+    </div>
+    <div class="box-form-booking">
+      <div class="box-form-item">
+        <label class="form__title" for="">telefono</label>
+        <input id="phone" type="tel" name="phone" required />
+      </div>
+      <div class="box-form-item">
+        <label class="sub-title-3">correo</label>
+        <input type="email" name="mail" required />
+      </div>
+    </div>
+    {% if opcion != transporte %}
+      {% if recorrido == 'ida' %}
+        <div class="box-form-booking">
+          <div class="box-form-item">
+            <label class="form__title" for="">Aerolinea</label>
+            <input type="text" name="aerolinea" required />
+          </div>
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">Numero de vuelo</label>
+            <input type="text" name="nvuelo"  required />
+          </div>
+        </div>
+      {% else %}
+        <div class="box-form-booking">
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">Aerolinea (llegada)</label>
+            <input type="text" name="aerolinea" required />
+          </div>
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">Aerolinea (regreso)</label>
+            <input type="text" name="aerolinea_r" required />
+          </div>
+        </div>
+        <div class="box-form-booking">
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">Numero de vuelo (llegada)</label>
+            <input type="text" name="nvuelo" required />
+          </div>
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">Numero de vuelo  (regreso)</label>
+            <input type="text" name="nvuelo_r" required />
+          </div>
+        </div>
+      {% endif %}
+      <div class="box-form-booking">
+        <div class="box-form-item">
+          <label class="sub-title-3" for="">Vehiculo</label>
+          <input type="text" name="tour" value="{{ det_booking.name }}" readonly />
+        </div>
+        {% if recorrido == 'ida' %}
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">valor</label>
+            <input type="hidden" name="cash" value="{{ cash|safe }}" />
+            <input type="text" value="$ {{ cash|intcomma }} COP" readonly />
+            <input type="hidden" name="hotel" value="transporte" />
+          </div>
+        {% else %}
+          <div class="box-form-item">
+            <label class="sub-title-3" for="">valor total: ida y vuelta</label>
+            <input type="hidden" name="cash" value="{{ cash|safe }}" readonly />
+            <input type="text" value="$ {{ cash|intcomma }} COP" readonly />
+            <input type="hidden" name="hotel" value="transporte" />
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="box-form-booking">
+        <div class="box-form-one">
+          <label class="sub-title-3">hotel</label>
+          <input type="text" name="hotel" />
+        </div>
+      </div>
+      <div class="box-form-booking">
+        <div class="box-form-item">
+          <label class="sub-title-3">Tour</label>
+          <input type="text" name="tour" value="{{ det_booking.name }}" readonly />
+        </div>
+        <div class="box-form-item">
+          <label class="sub-title-3">valor Por persona</label>
+          <input type="number"
+                 name="cash"
+                 value="{{ det_booking.cash|safe }}"
+                 readonly />
+        </div>
+      </div>
+    {% endif %}
+    <div class="box-form-last">
+      {% if det_booking.name != "Van Compartida" %}
+        <div class="box-form-mult">
+          <label class="sub-title-3" for="">cantidad adultos</label>
+          <select class="select__booking" name="adults">
+            {% for passenger in passengers_list %}<option value="{{ passenger }}">{{ passenger }}</option>{% endfor %}
+          </select>
+        </div>
+      {% else %}
+        <input type="hidden" name="adults" value="{{ can_comp }}">
+      {% endif %}
+
+      <input type="submit" class="form__button" value="Continuar" />
+    
+    </div>
+  </form>
+{% endblock content %}

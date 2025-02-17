@@ -1,0 +1,126 @@
+{% extends 'layouts/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock title %}
+{% block content %}
+
+    <h2 class="layout__title">Reserva # {{ id }}</h2>
+    {% if tour.data.status == "APPROVED" %}<p class="aproved">¡Aprobado!</p>{% endif %}
+    <div class="layout__booking-info">
+        
+        <table class="booking-info__table">
+            <tr>
+                <td class="booking-info__title">Nombre</td> 
+                <td class="booking-info__data">{{ booking.name }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">Celular</td>
+                <td class="booking-info__data">{{ booking.phone }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title booking-info__title--bb">Correo</td>
+                <td class="booking-info__data booking-info__data--bb">{{ booking.mail }}</td>
+            </tr>
+            <tr>
+                <td class="det-division"></td>
+                <td class="det-division"></td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">Fecha de recogida</td>
+                <td class="booking-info__data">{{ booking.checkin }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">Hora de recogida</td>
+                <td class="booking-info__data">{{ booking.hora }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">Origen</td>
+                <td class="booking-info__data">{{ booking.origen }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">Destino</td>
+                <td class="booking-info__data">{{ booking.destino }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">Aerolinea</td>
+                <td class="booking-info__data">{{ booking.air }}</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title booking-info__title--bb">Numero de vuelo</td>
+                <td class="booking-info__data booking-info__data--bb">{{ booking.nair }}</td>
+            </tr>
+            {% if booking.recorrido == "idayvuelta" %}
+                <tr>
+                    <td class="det-division"></td>
+                    <td class="det-division"></td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title">Fecha de recogida</td>
+                    <td class="booking-info__data">{{ booking.date_ret }}</td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title">Hora de recogida</td>
+                    <td class="booking-info__data">{{ booking.hora_ret }}</td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title">Origen Regreso</td>
+                    <td class="booking-info__data">{{ booking.origen_ret }}</td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title">Destino Regreso</td>
+                    <td class="booking-info__data">{{ booking.destino_ret }}</td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title">Aerolinea Regreso</td>
+                    <td class="booking-info__data">{{ booking.air_r }}</td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title booking-info__title--bb">Numero de Vuelo Regreso</td>
+                    <td class="booking-info__data booking-info__data--bb">{{ booking.nair_r }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td class="det-division"></td>
+                <td class="det-division"></td>
+            </tr>
+            {% if booking.opcion == 'transporte' %}
+                <tr>
+                    <td class="booking-info__title">Vehiculo</td>
+                    <td class="booking-info__data">{{ booking.tour }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="booking-info__title">Hotel: {{ opcion }} </td>
+                    <td class="booking-info__data">{{ booking.hotel }}</td>
+                </tr>
+                <tr>
+                    <td class="booking-info__title">Tours</td>
+                    <td class="booking-info__data">{{ booking.tour }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td class="booking-info__title booking-info__title--bb">Cant Adultos</td>
+                <td class="booking-info__data booking-info__data--bb">{{ booking.adults }}</td>
+            </tr>
+            <tr>
+                <td class="det-division"></td>
+                <td class="det-division"></td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">valor adultos</td>
+                <td class="booking-info__data">$ {{ booking.cash|intcomma }} COP</td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">valor adicional</td>
+                <td class="booking-info__data"></td>
+            </tr>
+            <tr>
+                <td class="booking-info__title">valor Total</td>
+                <td class="booking-info__data">$ {{ booking.total|intcomma }} COP</td>
+            </tr>
+        </table>
+        <span class="congratulations">¡Gracias por su compra!</span>
+    </div>
+{% endblock content %}

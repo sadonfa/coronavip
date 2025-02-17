@@ -1,0 +1,226 @@
+{% extends "layouts/base.html" %}   
+{% load static %}
+{% load humanize %}
+{% block title %}
+  {{ title }}
+{% endblock title %}
+{% block content %}
+  <datalist id="bookmark_list_start">
+    <option>{{ start_of_route }}</option>
+  </datalist>
+  <datalist id="bookmark_list_end">
+    <option>{{ end_of_route }}</option>
+  </datalist>
+
+
+  <div class="dark__vehiculos">
+
+    <div class="vehiculos__content">
+        <h2 class="vehiculos__title">Seleccione su vehiculo</h2>
+        {% for vehiculo in vehiculosvip %}
+            <form method="POST" action="{% url 'check' %}" class="vehiculos__vehiculo">
+            {% csrf_token %}
+            <div class="vehiculo__box">
+                <div class="vehiculo__car-n">
+                <label class="vehiculo__subtitle" for="name">{{ vehiculo.name }}</label>
+                <input type="hidden" id="name" name="name" value="{{ vehiculo.name }}" />
+                {% if vehiculo.tipo == 'vehiculo_lujo' %}
+                    <label class="c-val" for="value">$ {{ v_trayecto.vehiculo_lujo|intcomma }} COP</label>
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value"
+                            value="{{ v_trayecto.vehiculo_lujo }}" />
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value_d"
+                            value="{{ v_trayecto_dos.vehiculo_lujo }}" />
+                {% elif vehiculo.tipo == 'camioneta' %}
+                    <label class="c-val" for="value">$ {{ v_trayecto.camioneta|intcomma }} COP</label>
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value"
+                            value="{{ v_trayecto.camioneta }}" />
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value_d"
+                            value="{{ v_trayecto_dos.camioneta }}" />
+                {% elif vehiculo.tipo == 'lujo' %}
+                    <label class="c-val" for="value">$ {{ v_trayecto.lujo|intcomma }} COP</label>
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value"
+                            value="{{ v_trayecto.lujo }}" />
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value_d"
+                            value="{{ v_trayecto_dos.lujo }}" />
+                {% elif vehiculo.tipo == 'mini_van_lujo' %}
+                    <label class="c-val" for="value">$ {{ v_trayecto.mini_van_lujo|intcomma }} COP</label>
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value"
+                            value="{{ v_trayecto.mini_van_lujo }}" />
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value_d"
+                            value="{{ v_trayecto_dos.mini_van_lujo }}" />
+                {% elif vehiculo.tipo == 'van_lujo' %}
+                    <label class="c-val" for="value">$ {{ v_trayecto.van_lujo|intcomma }} COP</label>
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value"
+                            value="{{ v_trayecto.van_lujo }}" />
+                    <input type="hidden"
+                            class="c-val"
+                            id="value"
+                            name="value_d"
+                            value="{{ v_trayecto_dos.van_lujo }}" />
+                {% endif %}
+                </div>
+                <div class="vehiculo__car-d">
+                <p>
+                    <i class="fa-sharp fa-solid fa-suitcase-rolling"></i>
+                    {{ vehiculo.amount_luggage }}
+                </p>
+                <p>
+                    <i class="fa-sharp fa-solid fa-person"></i>
+                    {{ vehiculo.Number_passengers }}
+                </p>
+                </div>
+                <div class="vehiculo__car-i">
+                <img src="{{ vehiculo.image.url }}"
+                        alt="{{ vehiculo.name }}"
+                        class="vehiculo__image" />
+                </div>
+                <input type="submit" onclick="hizoClick()" class="form__button" value="Reservar" />
+            </div>
+            {% if dat_trayecto.time_ret %}
+                <input type="hidden" name="time_return" value="{{ dat_trayecto.time_ret }}" />
+            {% endif %}
+            <input type="hidden" value="{{ recorrido }}" name="recorrido" />
+            <input type="hidden" name="date" value="{{ dat_trayecto.date }}" />
+            <input type="hidden" name="time" value="{{ dat_trayecto.time }}" />
+            <input type="hidden" name="id" value="{{ vehiculo.id }}" />
+            <input type="hidden" name="origen" value="{{ dat_trayecto.start }}" />
+            <input type="hidden" name="destino" value="{{ dat_trayecto.end }}" />
+            </form>
+        {% endfor %}
+
+      
+    
+    </div>
+
+
+      <div class="map-info">
+        {% if recorrido == "ida" %}
+        <h3 class="title-2">Detalles de viaje</h3>
+        <div id="map"></div>
+        <div id="mapret" style="display:none"></div>
+        <div class="info-viaje">
+          <div class="detail-v">
+            <div class="box-det">
+              <h3 class="sub-title-3">Fecha de recogida</h3>
+              {{ dat_trayecto.date }}
+            </div>
+            <div class="box-det">
+              <h3 class="sub-title-3">Hora de recogida</h3>
+              {{ dat_trayecto.time }}
+            </div>
+          </div>
+          <div class="box-det-des">
+            <h3 class="sub-title-3">ruta</h3>
+            <span id="start" onchange="calcRoute();" value="{{ dat_trayecto.start }}">{{ dat_trayecto.start }}</span>
+            <hr />
+            <span id="end" onchange="calcRoute();" value="{{ dat_trayecto.end }}">{{ dat_trayecto.end }}</span>
+          </div>
+          <div class="detail-v">
+            <div class="box-det-des">
+              <h3 class="sub-title-3">Distancia</h3>
+              <span id="distancia-d">{{ dat_trayecto.distance }}</span>
+            </div>
+            <div class="box-det-des">
+              <h3 class="sub-title-3">Duracion</h3>
+              <span id="duracion-d">{{ dat_trayecto.duration }}</span>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <h3 class="title-2">Detalles de viaje</h3>
+        <div id="map"></div>
+        <div class="info-viaje">
+          <div class="detail-v">
+            <div class="box-det">
+              <h3 class="sub-title-3">Fecha de recogida</h3>
+              {{ dat_trayecto.date }}
+            </div>
+            <div class="box-det">
+              <h3 class="sub-title-3">Hora de recogida</h3>
+              {{ dat_trayecto.time }}
+            </div>
+          </div>
+          <div class="box-det-des">
+            <h3 class="sub-title-3">ruta</h3>
+            <span id="start" onchange="calcRoute();" value="{{ dat_trayecto.start }}">{{ dat_trayecto.start }}</span>
+            <hr />
+            <span id="end" onchange="calcRoute();" value="{{ dat_trayecto.end }}">{{ dat_trayecto.end }}</span>
+          </div>
+          <div class="detail-v">
+            <div class="box-det-des">
+              <h3 class="sub-title-3">Distancia</h3>
+              <span id="distancia-d">{{ dat_trayecto.distance }} km</span>
+            </div>
+            <div class="box-det-des">
+              <h3 class="sub-title-3">Duracion</h3>
+              <span id="duracion-d">{{ dat_trayecto.duration }} min</span>
+            </div>
+          </div>
+        </div>
+        <h3 class="title-2">Detalles de viaje 2</h3>
+        <div id="mapret"></div>
+        <div class="info-viaje">
+          <div class="detail-v">
+            <div class="box-det">
+              <h3 class="sub-title-3">Fecha de recogida</h3>
+              {{ dat_trayecto.date_ret }}
+            </div>
+            <div class="box-det">
+              <h3 class="sub-title-3">Hora de recogida</h3>
+              {{ dat_trayecto.time_ret }}
+            </div>
+          </div>
+          <div class="box-det-des">
+            <h3 class="sub-title-3">ruta</h3>
+            <span id="start_ret"
+                  onchange="calcRoute();"
+                  value="{{ dat_trayecto.start_r }}">{{ dat_trayecto.start_r }}</span>
+            <hr />
+            <span id="end_ret" onchange="calcRoute();" value="{{ dat_trayecto.end_r }}">{{ dat_trayecto.end_r }}</span>
+          </div>
+          <div class="detail-v">
+            <div class="box-det-des">
+              <h3 class="sub-title-3">Distancia</h3>
+              <span id="distanciadb">{{ dat_trayecto.distance_ret }} km</span>
+            </div>
+            <div class="box-det-des">
+              <h3 class="sub-title-3">Duracion</h3>
+              <span id="duraciondb">{{ dat_trayecto.duration_ret }} min</span>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+
+        </div>  
+
+    </div>
+ 
+{% endblock content %}

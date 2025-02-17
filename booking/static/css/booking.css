@@ -1,0 +1,282 @@
+.content-form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  /* height: 80vh; */
+  margin: 0px auto;
+  /* margin-top: 30px; */
+  /* border: 1px solid #ddd;
+  box-shadow: 0px 0px 10px #ddd; */
+}
+
+#box h1 {
+  text-align: center;
+}
+
+.barra {
+  width: 15%;
+  height: 80vh;
+  margin-top: 30px;
+  background-color: #ff8800;
+  color: #ff8800;
+  box-shadow: 0px 0px 10px #ddd;
+}
+
+.box-form-booking {
+  display: flex;
+  width: 95%;
+  justify-content: space-evenly;
+  /* border: 1px solid blue; */
+  margin-bottom: 10px;
+}
+
+.box-form-item,
+.box-form-item-m,
+.box-form-item-one {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  width: 40%;
+  margin-bottom: 15px;
+}
+
+.box-form-item-m {
+  width: 33%;
+}
+
+.box-form-item-one {
+  width: 88%;
+}
+
+.box-form-item:focus {
+  color: aqua;
+}
+
+.box-form-item-one label,
+.box-form-item label {
+  font-family: "Montserrat Bold";
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 5px;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.box-form-item-one label:focus,
+.box-form-item label:focus {
+  color: aqua;
+}
+
+.box-form-item-one input,
+.box-form-item input,
+.box-form-item-m,
+.box-form-item-m select {
+  padding: 9px 7px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+}
+
+.box-form-item-m select {
+  width: 100%;
+}
+
+.box-form-item-one input:focus,
+.box-form-item input:focus {
+  border-color: #ff8800;
+  outline: none;
+}
+
+form input::placeholder {
+  color: #aaa;
+  text-transform: capitalize;
+}
+
+.box-form-item-one :focus::-moz-placeholder,
+.box-form-item :focus::-moz-placeholder {
+  /* / Firefox 19+  */
+  color: #ff8800;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.foo-form {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  /* border: 1px solid red; */
+}
+
+.foo-form a {
+  text-decoration: none;
+  color: #aaa;
+  text-transform: capitalize;
+  transition: all 200ms;
+  font-size: 12px;
+}
+
+.foo-form a:hover {
+  color: #ff8800;
+}
+
+.title-form {
+  width: 70%;
+  text-align: left;
+  font-size: 16px;
+  font-family: "LeagueSpartan Bold";
+  color: #ff8800;
+  margin-bottom: 35px;
+}
+
+.title-form span {
+  color: #777;
+}
+
+.form-booking {
+  color: #333;
+  font-size: 13px;
+  font-family: "Montserrat";
+}
+
+.form-booking h2 {
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.form-booking h3 {
+  font-size: 12px;
+}
+
+.form-booking span {
+  color: black;
+  font-weight: bold;
+  margin-right: 5px;
+  text-transform: capitalize;
+}
+
+.label_form {
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  pointer-events: none;
+  color: var(--color-subtitles);
+  transition: all 300ms ease-in-out;
+}
+
+.box-form-item-one input:focus ~ label,
+.box-form-item-one input:not(:placeholder-shown) ~ label,
+.box-form-item input:focus ~ label,
+.box-form-item input:not(:placeholder-shown) ~ label,
+.box-form-item select:not(:placeholder-shown) ~ label {
+  top: -20px;
+  left: 0;
+  font-size: 13px;
+  color: #ff8800;
+  border-color: #ff8800;
+  z-index: 1;
+}
+
+.box-form-item input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.box-form-item input::-moz-placeholder {
+  color: transparent;
+}
+
+.sep-booking {
+  width: 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.congratulations {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.aproved {
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Roboto Black";
+  font-weight: bold;
+  color: green;
+}
+
+.box-form-last {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  /* border: 1px solid red; */
+}
+
+.select__booking {
+  padding: 1rem 2rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border: none;
+  border-radius: 1.5rem;
+}
+
+.select__booking:hover {
+  cursor: pointer;
+}
+
+.form__title {
+  color: var(--color-primary);
+}
+
+/* DETALLE DE BOOKING */
+
+.layout__booking-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  background-color: var(--color-secundary);
+  opacity: 0.7;
+  color: var(--color-text-dark);
+  border-radius: 3rem;
+}
+
+.booking-info__table {
+  padding: 2rem 3rem;
+}
+
+.booking-info__title {
+  width: 40%;
+  font-family: "Roboto Black";
+  font-weight: bold;
+  border-right: 1px solid var(--color-text);
+  padding: 0.5rem 1.8rem;
+  padding-left: 3rem;
+}
+
+.booking-info__data {
+  width: 50%;
+  padding: 0.5rem 1.8rem;
+}
+
+.booking-info__data--bb,
+.booking-info__title--bb {
+  border-bottom: 1px solid var(--color-text);
+}

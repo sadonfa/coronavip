@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ESTILOS GENERALES -->
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="shortcut icon"
+    type="image/png"
+    href="{% static 'img/logo.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+
+    <!-- RESPONSIVE -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <!-- Estilos generales del mapa -->
+    <link rel="stylesheet"
+        type="text/css"
+        href="{% static 'css/styles_maps.css' %}" />
+
+    <!-- FUENTES --> 
+    <link rel="stylesheet" href=" {% static 'css/fonts.css' %} ">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet"
+        href="{% static 'fontawesome/css/fontawesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />           
+
+    <!-- SCRIPT -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/menu.js' %}" defer></script>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <div class="layout">
+        
+        <div class="layout__header">
+
+            <div class="header__logo">
+                <img src="{% static 'img/logo.png' %}" alt="Coronatours">
+            </div>
+
+            <!-- Menu responsive -->
+            <div class="layout__menu-toggle">
+                <i class="menu-toggle__icon fa-solid fa-bars"></i>
+                <i class="menu-toggle__icon fa-solid fa-xmark"></i>
+            </div>
+
+            <nav class="header__menu">
+                <li class="menu__item menu__item--top"> 
+                    <a href="{% url 'home' %}" class="menu__link {% if request.path == '/inicio/' %}active{% endif %}">Home </a> 
+                </li>   
+                <li class="menu__item"> 
+                    <a href="#" class="menu__link {% if request.path == '/transporte/' %}active{% endif %}">transfer</a> 
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link {% if request.path == '/contacto/' %}active{% endif %}">contacto</a>
+                 </li>
+            </nav>
+            
+        </div>                          
+       {% block content %}{% endblock content %} 
+    </div>
+
+    <!-- Invocado JavaScript -->
+    <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2fdd628K7OXK4_ojjL-n0J5aXdry-z1g&callback=initMap&libraries=places"
+    ></script>
+    <script type="text/javascript" src="{% static 'js/google_maps.js' %}"></script>
+    <!--<script type="text/javascript" src="{% static 'js/api_google.js' %}" ></script>-->
+</body>
+</html>     

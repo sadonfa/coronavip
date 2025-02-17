@@ -1,0 +1,376 @@
+/* #map,
+#mapret {
+  float: none;
+  height: 100%;
+  width: 100%;
+} */
+
+/* #mapret {
+  margin: 20px auto;
+  width: 40%;
+  height: 500px;
+} */
+
+#contentMap {
+  float: left;
+  background: #bbbbbb;
+  width: 68%;
+  height: 600px;
+  padding: 7px;
+  margin-top: 4%;
+  margin-left: 15%;
+  /* box-shadow: 0px 0px 40px #5c5c5c; */
+  transition: 600ms;
+}
+
+#maps_reserve {
+  /* border: 1px solid yellow; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 500px;
+  margin-bottom: 25px;
+  /* margin: 1%; */
+  /* padding: 7px;
+    background-color: #bbbbbb; */
+  box-shadow: 0px 0px 10px #5c5c5c;
+}
+
+.separador {
+  height: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*
+#contentMap:hover{
+    float: left;    
+    background: #bbbbbb;
+    width: 72%;
+    height: 600px;
+    margin-left: 13%;
+    padding: 6px;
+    box-shadow: 0px 0px 60px #5abb5f;
+}
+*/
+
+.content-map {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* border: 2px solid yellow; */
+}
+
+.info-map {
+  display: block;
+  margin: 0px auto;
+  margin-top: 35px;
+  width: 90%;
+  text-align: center;
+  /* border: 2px solid red; */
+}
+
+.info-map img {
+  width: 100%;
+}
+
+.boxMap {
+  background: #fff;
+  width: 45%;
+  padding: 25px 25px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px #bbbbbb;
+  transition: 600ms;
+  /* border: 1px solid red; */
+  /* margin: 0px auto; */
+}
+
+.label_reserve {
+  width: 40%;
+  font-size: 19px;
+}
+
+.form_reserve {
+  width: 40%;
+  /* padding: 5px; */
+  /* margin: 1%; */
+  margin-left: 0%;
+  font-size: 19px;
+  border: 2px solid red;
+  border-color: red;
+}
+
+.reserva {
+  width: 180px;
+  position: center;
+  padding: 14px;
+  margin-top: 10px;
+  background-color: #e19328;
+  border: none;
+  border-radius: 5px;
+}
+
+.reserva:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #e19328;
+}
+
+/*
+#boxMap:hover {
+    background: #bbbbbb;
+    width: 77%;
+    padding: 18px;
+    margin-top: 3%;
+    margin-left: 9%;
+    box-shadow: 0px 0px 60px #5abb5f;
+}
+*/
+.select_form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-bottom: 15px;
+  font-family: "Montserrat";
+  font-size: 13px;
+  color: #5c5c5c;
+}
+
+.select_form select {
+  padding: 10px 15px;
+  /* font-size: 14px; */
+  color: #5c5c5c;
+  border: 1px solid #f6f6f6;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #f6f6f6;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+.menu_flotante {
+  /* background: #214ed7; */
+  width: 45%;
+  border-radius: 5px;
+  /* padding: 18px; */
+  /* border: 3px solid green; */
+}
+
+.menu_flotante_doble {
+  /* background: #214ed7; */
+  width: 25%;
+  border-radius: 5px;
+  /* padding: 18px; */
+  /* border: 3px solid green; */
+}
+
+.box-art {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  box-shadow: 0px 0px 7px #bbbbbb;
+}
+
+.box-art:hover {
+  box-shadow: 0px 0px 7px #5c5c5c;
+  cursor: pointer;
+}
+
+.box-art .car-n {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.box-art .car-d {
+  width: 14%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.c-title {
+  color: #222;
+  font-weight: 700;
+}
+
+.c-val {
+  display: block;
+  font-family: "Roboto Black";
+  color: #e7b10a;
+  font-size: 20px;
+  margin-top: 7px;
+}
+
+.box-art .car-d i {
+  color: #e7b10a;
+  margin-right: 6px;
+}
+.box-art .car-i {
+  width: 35%;
+}
+
+.box-art .car-i img {
+  width: 90%;
+}
+
+.box-art input[type="submit"] {
+  padding: 4px 14px;
+  font-size: 14px;
+  border: 1px solid #e19328;
+}
+
+/* 
+.menu_flotante>form>ul {
+    background: rgba(65, 217, 217, 0.623);
+    width: 84%;
+    padding: 18px;
+    margin: 3px;
+    transition: 350ms;
+}
+
+.menu_flotante>form>ul>li {
+    width: 40%;
+} */
+
+/* .menu_flotante>form>ul:hover>li>div {
+    float: right;
+    overflow: visible;
+}
+
+.menu_flotante>form>ul:hover {
+    background: rgb(65, 217, 217);
+    width: 100%;
+    height: 60px;
+    padding: 18px;
+    margin: 5px;
+} */
+
+/* FORMULARIO DE MAPA  */
+
+.boxMap input[type="text"],
+.boxMap input[type="tel"],
+.boxMap input[type="search"],
+.boxMap input[type="date"],
+.boxMap input[type="time"] {
+  display: inline-block;
+  width: 95%;
+  padding: 12px 0px;
+  padding-left: 12px;
+  /* border: 1px solid red; */
+  border: 1px solid #f6f6f6;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+.boxMap input[type="text"]:focus {
+  border-color: 2px solid #5c5c5c;
+}
+
+.boxMap input[type="time"]::-webkit-calendar-picker-indicator,
+.boxMap input[type="date"]::-webkit-calendar-picker-indicator {
+  color: red;
+  margin-right: 15px;
+  font-size: 16px;
+}
+
+.boxMap input[type="email"] {
+  display: block;
+  width: 95%;
+  padding: 12px 0px;
+  padding-left: 12px;
+  font-size: 12px;
+}
+
+.boxMap label {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  /* margin-top: 15px; */
+  color: #5c5c5c;
+  margin-bottom: 5px;
+}
+
+.form-date {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 2px solid red; */
+}
+
+.d-box {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.d-cont {
+  width: 100%;
+  margin-bottom: 14px;
+  /* border: 2px solid red; */
+}
+
+.c-map {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-anuncio {
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+}
+
+/* DETALLES DE RESERVAS  */
+
+.det-resesrva {
+  width: 92%;
+  min-height: 50px;
+  background-color: #222;
+  color: white;
+  box-shadow: 0px 0px 7px #5c5c5c;
+  margin-bottom: 50px;
+  /* margin-top: 50px; */
+  padding: 50px 40px;
+}
+
+.sub-title-3 {
+  color: var(--color-primary);
+  /* text-transform: uppercase; */
+  font-family: "Montserrat Bold";
+  font-size: 15px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.detail-v {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.box-det-des,
+.box-det {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.box-det-des {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-det-des input[type="search"] {
+  width: 100%;
+  padding: 5px 15px;
+}
