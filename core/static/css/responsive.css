@@ -108,6 +108,7 @@
   .vehiculo__car-n,
   .vehiculo__colum {
     width: 40%;
+    flex-direction: column;
   }
 
   .vehiculo__car-d {
@@ -123,7 +124,7 @@
   }
 
   .vehiculo__subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .form__button {

@@ -289,8 +289,8 @@ def answer_booking(request, id=False):
     # tour = get_object_or_404(Tours, id=53)
 
 
-    URL_API =  "https://sandbox.wompi.co/v1/transactions/" + id_wompi
-    # URL_API =  "https://production.wompi.co/v1/transactions/" + id_wompi
+    #URL_API =  "https://sandbox.wompi.co/v1/transactions/" + id_wompi
+    URL_API =  "https://production.wompi.co/v1/transactions/" + id_wompi
 
     response = requests.get(URL_API)
 
@@ -348,7 +348,7 @@ def answer_booking(request, id=False):
             subject, #Titulo
             "This is an important message.",
             EMAIL_HOST_USER, #Remitente
-            ["gegovaceo@gmail.com", booking.mail]) #Destinatario
+            ["coronaserviciosvip@gmail.com", booking.mail]) #Destinatario
 
         message.attach_alternative(template, 'text/html')
         message.send()  
