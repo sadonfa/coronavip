@@ -86,9 +86,76 @@
 }
 
 @media screen and (max-width: 606px) {
+  .dark__vehiculos,
   .layout__home {
     flex-direction: column;
   }
+
+  .layout {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .layout__detail {
+    flex-direction: column-reverse;
+  }
+
+  .vehiculos__content,
+  .map-info,
+  .detail__map,
+  .detail__info {
+    width: 100%;
+  }
+  .vehiculo__car-n,
+  .vehiculo__colum {
+    width: 40%;
+  }
+
+  .vehiculo__car-d {
+    width: 9%;
+  }
+
+  .c-val {
+    font-size: 1.6rem !important;
+  }
+
+  .vehiculo__car-i {
+    width: 100%;
+  }
+
+  .vehiculo__subtitle {
+    font-size: 1.2rem;
+  }
+
+  .form__button {
+    width: 90%;
+    font-size: 1rem;
+  }
+  .box-form-item-one,
+  .box-form-item {
+    width: 95%;
+  }
+
+  .box-form-last {
+    width: 95%;
+    flex-direction: column;
+  }
+
+  .box-form-mult {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .box-form-booking {
+    flex-direction: column;
+  }
+
+  .layout__booking-info {
+    width: 100%;
+  }
+
   .home__info {
     width: 80%;
   }

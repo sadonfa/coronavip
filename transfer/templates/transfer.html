@@ -96,12 +96,17 @@
                     {{ vehiculo.Number_passengers }}
                 </p>
                 </div>
+                <div class="vehiculo__colum">
+
+                
                 <div class="vehiculo__car-i">
-                <img src="{{ vehiculo.image.url }}"
+                
+                  <img src="{{ vehiculo.image.url }}"
                         alt="{{ vehiculo.name }}"
                         class="vehiculo__image" />
                 </div>
                 <input type="submit" onclick="hizoClick()" class="form__button" value="Reservar" />
+              </div>
             </div>
             {% if dat_trayecto.time_ret %}
                 <input type="hidden" name="time_return" value="{{ dat_trayecto.time_ret }}" />

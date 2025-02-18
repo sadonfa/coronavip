@@ -351,7 +351,7 @@ def answer_booking(request, id=False):
             ["gegovaceo@gmail.com", booking.mail]) #Destinatario
 
         message.attach_alternative(template, 'text/html')
-        # message.send()  
+        message.send()  
 
     return render(request, 'respuesta.html', {
         'title': 'confirmacion reserva',     
