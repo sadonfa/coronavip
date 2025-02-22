@@ -5,213 +5,178 @@
 {% block title %} {{title}} {% endblock title %} 
 
 {% block content %}
-
-<div class="layout__home">
-
-  <div class="home__info">
-    <span class="info__subtitle">¿A dónde quieres</span>
-    <h1 class="info__title"> ir ahora? </h1>
-  </div>
-
-  <div class="home__image">
-    <img src="{% static 'img/g4893.png' %}" alt="">
-  </div>
-
-</div>
-
-
-<form class="form__header ">
-
-  <div class="form__select ">
-      <label class="form__label form__label--select ">Seleccione rutas:</label>
-    <select id="status" name="status" onChange="mostrar(this.value);" class="select__options">
-      <option value="ida">Ida</option>
-      <option value="idayvuelta">Ida y vuelta</option>
-    </select>
-    </div>
-  <span class="form__sub-title">*Reservas exclusiva para Cartagena</span>
-
   
-</form> 
+  <div class="layout__home">
 
-    <!-- IDA -->
-    <div id="ida">
-      <div class="ida">
-        <form method="post" action="{% url 'detail' %}"  class="layout__form">
+    <div class="home__form">
+
+      <form class="form__header ">
+
+        <div class="form__select ">
+            <label class="form__label form__label--select ">Seleccione rutas:</label>
+          <select id="status" name="status" onChange="mostrar(this.value);" class="select__options">
+            <option value="ida">Ida</option>
+            <option value="idayvuelta">Ida y vuelta</option>
+          </select>
+          </div>
+        <span class="form__sub-title">*Reservas exclusiva para Cartagena</span>
+
+        
+      </form> 
+
+      <!-- IDA -->
+      <div id="ida">
+        <div class="ida">
+          <form method="post" action="{% url 'detail' %}"  class="layout__form">
+            {% csrf_token %}
+          
+              <div class="form__cont">
+                <label class="form__label" for="start_of_route">Elije la ubicación de partida</label>
+                <input type="text"
+                      id="start_a"
+                      name="start_of_route"
+                      class="form__input"
+                      required />
+              </div>
+
+              <div class="form__cont">
+                <label class="form__label" for="end_of_route">Elije un destino</label>
+                <input type="text"
+                      id="end_a"
+                      name="end_of_route"
+                      class="form__input"
+                      required />
+              </div>
+          <div class="form__cont-doble">
+              <div class="form__cont">
+                <label class="form__label">Fecha de Recogida</label>
+                <input type="date"
+                      name="date"
+                      class="form__input"
+                      min='{{ fecha }}'
+                      required />
+              </div>
+
+              <div class="form__cont">
+                <label class="form__label">Hora de Recogida (Ida)</label>
+                <input type="time" name="time" class="form__input" required />
+              </div>
+            </div>
+            
+            <input type="hidden" name="viaje" value="ida" />
+            <input type="hidden" name="distance" id="distanceId" value="" />
+            <input type="hidden" name="duration" id="durationId" value="" />
+            <input type="submit" class="form__button" value="Reservar" />
+          </form>
+        </div>
+      </div>
+
+      <!-- IDA Y VUELTA -->
+      <div id="idayvuelta" style="display:none">
+
+        <h3  class="form__sub">Datos de Ida</h3>
+
+        <form method="post" action="{% url 'detail' %}" >
           {% csrf_token %}
-         
+          <div  class="layout__form">
             <div class="form__cont">
               <label class="form__label" for="start_of_route">Elije la ubicación de partida</label>
               <input type="text"
-                     id="start_a"
-                     name="start_of_route"
-                     class="form__input"
-                     required />
+                    id="start_b1"
+                    name="start_of_route"
+                    class="form__input"
+                    required />
             </div>
 
             <div class="form__cont">
               <label class="form__label" for="end_of_route">Elije un destino</label>
               <input type="text"
-                     id="end_a"
-                     name="end_of_route"
-                     class="form__input"
-                     required />
+                    id="end_b1"
+                    name="end_of_route"
+                    class="form__input"
+                    required />
             </div>
-         
+            <div class="form__cont-doble">
             <div class="form__cont">
-              <label class="form__label">Fecha de Recogida</label>
+              <label class="form__label" for="date">Fecha de Recogida</label>
               <input type="date"
-                     name="date"
-                     class="form__input"
-                     min='{{ fecha }}'
-                     required />
+                    name="date"
+                    min='{{ fecha }}'
+                    class="form__input"
+                    required />
             </div>
 
             <div class="form__cont">
-              <label class="form__label">Hora de Recogida (Ida)</label>
+              <label class="form__label" for="time">Hora de Recogida (Ida)</label>
               <input type="time" name="time" class="form__input" required />
             </div>
-          
-          <input type="hidden" name="viaje" value="ida" />
-          <input type="hidden" name="distance" id="distanceId" value="" />
+          </div>
+
+          <input type="hidden" id="distanceId" value="" name="distance" />
           <input type="hidden" name="duration" id="durationId" value="" />
-          <input type="submit" class="form__button" value=">  " />
-        </form>
-      </div>
-    </div>
 
-
-    <!-- IDA Y VUELTA -->
-    <div id="idayvuelta" style="display:none">
-
-      <h3>Datos de Ida</h3>
-
-      <form method="post" action="{% url 'detail' %}" >
-        {% csrf_token %}
-      <div  class="layout__form">
-          <div class="form__cont">
-            <label class="form__label" for="start_of_route">Elije la ubicación de partida</label>
-            <input type="text"
-                   id="start_b1"
-                   name="start_of_route"
-                   class="form__input"
-                   required />
-          </div>
-
-          <div class="form__cont">
-            <label class="form__label" for="end_of_route">Elije un destino</label>
-            <input type="text"
-                   id="end_b1"
-                   name="end_of_route"
-                   class="form__input"
-                   required />
-          </div>
-
-          <div class="form__cont">
-            <label class="form__label" for="date">Fecha de Recogida</label>
-            <input type="date"
-                   name="date"
-                   min='{{ fecha }}'
-                   class="form__input"
-                   required />
-          </div>
-
-          <div class="form__cont">
-            <label class="form__label" for="time">Hora de Recogida (Ida)</label>
-            <input type="time" name="time" class="form__input" required />
-          </div>
-        
-
-        <input type="hidden" id="distanceId" value="" name="distance" />
-        <input type="hidden" name="duration" id="durationId" value="" />
-
-      </div>
-        <h3>Datos de Regreso</h3>
-        <div class="layout__form">    
-        
-        
-          <div class="form__cont">
-            <label class="form__label" for="start_of_route">Elije la ubicación de partida</label>
-            <input type="text"
-                   id="start_b"
-                   name="start_of_route_return"
-                   class="form__input"
-                   required />
-          </div>
-
-          <div class="form__cont">
-            <label class="form__label" for="end_of_route">Elije un destino</label>
-            <input type="text"
-                   id="end_b"
-                   name="end_of_route_return"
-                   class="form__input"
-                   required />
-          </div>
-        
-          <div class="form__cont">
-            <label class="form__label" for="date">Fecha de Recogida</label>
-            <input type="date"
-                   name="date_return"
-                   min='{{ fecha }}'
-                   class="form__input"
-                   required />
-          </div>
-
-          <div class="form__cont">
-            <label class="form__label" for="time">Hora de Recogida (Ida)</label>
-            <input type="time" name="time_return" class="form__input" required />
-            {% comment %} <span>*Formato 24 horas</span> {% endcomment %}
-          </div>
-
-        <input type="hidden" id="distanceIdRet" value="" name="distance" />
-        <input type="hidden" name="duration" id="durationId" value="" />
-        <input type="hidden" name="viaje" value="idayvuelta" />
-        <input type="submit" class="form__button" value=">" />
-      </div>      
-      </form>
-    
-    </div>
-
-{% comment %} 
-<form method="post" action="{% url 'transfer' %}" class="layout__form">
-    {% csrf_token %}    
-   
-    <div class="form__cont">
-        <label class="form__label" for="start_of_route">Elije la ubicación de partida</label>
-        <input type="text"
-               id="start_a"
-               name="start_of_route"  
-               class="form__input"
-               required />
-      </div>
-
-      <div class="form__cont">
-        <label class="form__label" for="end_of_route">Elije un destino</label>
-   
-        <input type="text"
-               id="end_a"    
-               name="end_of_route"
-               class="form__input"
-               required />  
-            </div>
-            
+        </div>
+          <h3 class="form__sub">Datos de Regreso</h3>
+          <div class="layout__form">    
+          
+          
             <div class="form__cont">
-        <label class="form__label" for="date">Fecha de Recogida</label>
-        <input type="date"
-               name="date"
-               min='{{ fecha }}'
-               class="form__input"
-               required />
+              <label class="form__label" for="start_of_route">Elije la ubicación de partida</label>
+              <input type="text"
+                    id="start_b"
+                    name="start_of_route_return"
+                    class="form__input"
+                    required />
             </div>
-               <div class="form__cont">
-        <label class="form__label" for="time">Hora de Recogida</label>
-        <input type="time" name="time" class="form__input" required />
+
+            <div class="form__cont">
+              <label class="form__label" for="end_of_route">Elije un destino</label>
+              <input type="text"
+                    id="end_b"
+                    name="end_of_route_return"
+                    class="form__input"
+                    required />
+            </div>
+          
+            <div class="form__cont-doble">
+            <div class="form__cont">
+              <label class="form__label" for="date">Fecha de Recogida</label>
+              <input type="date"
+                    name="date_return"
+                    min='{{ fecha }}'
+                    class="form__input"
+                    required />
+            </div>
+
+            <div class="form__cont">
+              <label class="form__label" for="time">Hora de Recogida (Ida)</label>
+              <input type="time" name="time_return" class="form__input" required />
+              {% comment %} <span>*Formato 24 horas</span> {% endcomment %}
+            </div>
+          </div>
+
+          <input type="hidden" id="distanceIdRet" value="" name="distance" />
+          <input type="hidden" name="duration" id="durationId" value="" />
+          <input type="hidden" name="viaje" value="idayvuelta" />
+          <input type="submit" class="form__button" value="reservar" />
+        </div>      
+        </form>
+      
+      </div>
     </div>
-    <input type="hidden" id="distanceId" value="" name="distance" />
-    <input type="hidden" name="duration" id="durationId" value="" />
-   
-    <input type="submit" class="form__button" value=">" />
-  </form>    {% endcomment %}
+
+    <div class="home__video">
+      <span class="info__subtitle">¿A dónde quieres</span>
+        <h1 class="info__title"> ir ahora? </h1>
+      <div class="home__image">
+        <video  autoplay muted  loop>
+          <source src="{% static 'videos/video.mp4' %} " type="video/mp4">
+          <source src="movie.ogg" type="video/ogg">
+          Tu navegador no admite el elemento <code>video</code>.
+        </video>    
+      </div>
+    </div>
+</div>
 
 
   {% endblock content %}

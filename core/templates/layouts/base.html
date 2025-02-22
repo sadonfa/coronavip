@@ -45,35 +45,43 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    <div class="layout">
-        
-        <div class="layout__header">
-
-            <div class="header__logo">
-                <img src="{% static 'img/logo.png' %}" alt="Coronatours">
-            </div>
-
-            <!-- Menu responsive -->
-            <div class="layout__menu-toggle">
-                <i class="menu-toggle__icon fa-solid fa-bars"></i>
-                <i class="menu-toggle__icon fa-solid fa-xmark"></i>
-            </div>
-
-            <nav class="header__menu">
-                <li class="menu__item menu__item--top"> 
-                    <a href="{% url 'home' %}" class="menu__link {% if request.path == '/inicio/' %}active{% endif %}">Home </a> 
-                </li>   
-                <li class="menu__item"> 
-                    <a href="#" class="menu__link {% if request.path == '/transporte/' %}active{% endif %}">transfer</a> 
-                </li>
-                <li class="menu__item">
-                    <a href="#" class="menu__link {% if request.path == '/contacto/' %}active{% endif %}">contacto</a>
-                 </li>
-            </nav>
+    <div class="fondo">
+        <div class="layout">
             
-        </div>                          
-       {% block content %}{% endblock content %} 
+            <div class="layout__header">
+
+                <div class="header__logo">
+                    <img src="{% static 'img/logo.png' %}" alt="Coronatours">
+                </div>
+
+                <!-- Menu responsive -->
+                <div class="layout__menu-toggle">
+                    <i class="menu-toggle__icon fa-solid fa-bars"></i>
+                    <i class="menu-toggle__icon fa-solid fa-xmark"></i>
+                </div>
+
+                <nav class="header__menu">
+                    <li class="menu__item menu__item--top"> 
+                        <a href="{% url 'home' %}" class="menu__link {% if request.path == '/inicio/' %}active{% endif %}">Home </a> 
+                    </li>   
+                    <li class="menu__item"> 
+                        <a href="#" class="menu__link {% if request.path == '/transporte/' %}active{% endif %}">transfer</a> 
+                    </li>
+                    <li class="menu__item">
+                        <a href="#" class="menu__link {% if request.path == '/contacto/' %}active{% endif %}">contacto</a>
+                    </li>
+                </nav>
+                
+            </div>  
+
+            {% block content %}{% endblock content %} 
+        </div>
+        <footer class="layout__footer">
+            <p >&copy; Coronavip 2025.</p>
+
+        </footer>
     </div>
+    
 
     <!-- Invocado JavaScript -->
     <script
