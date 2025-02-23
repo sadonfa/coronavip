@@ -91,6 +91,14 @@
     width: 95%;
     margin-left: 1rem;
   }
+
+  .gallery__title {
+    width: 60%;
+  }
+
+  .gallery__card {
+    flex-basis: 100%;
+  }
 }
 
 @media screen and (max-width: 606px) {
