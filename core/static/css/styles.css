@@ -197,7 +197,9 @@ h6 {
   justify-content: space-between;
   align-items: flex-start;
   width: 95%;
+  padding-bottom: 5rem;
   /* margin: 0 auto; */
+  /* border-bottom: 1px solid var(--color-secundary); */
 }
 
 .home__info {
@@ -507,3 +509,136 @@ h6 {
   padding-bottom: 2rem;
   text-align: center;
 }
+
+.home__gallery {
+  margin-top: 5rem;
+  margin-bottom: 7rem;
+}
+
+.gallery__title {
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  padding-bottom: -4px;
+  font-size: 3.5rem;
+  text-align: center;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.gallery__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gallery__card {
+  flex-basis: 30%;
+  flex-grow: 1;
+  margin-top: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
+  position: relative;
+  /* width: 30%; */
+  /* padding: 2rem 3rem; */
+  padding-bottom: 4rem;
+  background-image: linear-gradient(
+    to right bottom,
+    #000000,
+    #030303,
+    #070707,
+    #0a0a0a,
+    #0d0d0d,
+    #101010,
+    #131313,
+    #161616,
+    #191919,
+    #1c1c1c,
+    #1f1f1f,
+    #222222
+  );
+  /* background-color: var(--color-text-dark); */
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem var(--color-sombra);
+}
+
+.card__img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20rem;
+  /* border: 2px solid red; */
+  border-bottom: 1px solid var(--color-border);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.card__photo {
+  width: 100%;
+  /* height: 100%; */
+}
+
+.card__header {
+  /* width: 90%; */
+  /* height: 4rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  /* align-items: center; */
+  margin-bottom: 1rem;
+  /* border: 1px solid red; */
+}
+
+.card__title {
+  width: 100%;
+  font-size: 2rem;
+
+  /* margin-right: 2rem; */
+  /* border: 1px solid yellow; */
+}
+
+.card__icon {
+  display: flex;
+  /* justify-content: center; */
+  width: 45%;
+  /* border: 1px solid yellow; */
+}
+
+.card__luggage,
+.card__passeger {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: -0.2rem;
+  padding-right: 2rem;
+  /* border: 1px solid blue; */
+  /* padding: 0.5rem 1rem; */
+  /* background-color: var(--color-primary); */
+  color: var(--color-text);
+  /* font-style: italic; */
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.card__item {
+  margin-right: 0.5rem;
+}
+
+.card__desc {
+  font-size: 1.2rem;
+  line-height: 1.3rem;
+  text-align: justify;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+/* .card__luggage {
+  top: 80px;
+} */
