@@ -1,3 +1,5 @@
 .env
 migrations/
 media/
+videos/
+/videos
