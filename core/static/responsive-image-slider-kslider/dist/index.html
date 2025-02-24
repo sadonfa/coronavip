@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>jQuery ultra simple slider - Kslider</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Montserrat' rel='stylesheet' type='text/css' />
+    <link href="css/kslider.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/jquery.kslider.min.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="kslider-wrapper" class="kslider-wrapper">
+        <ul class="kslider">
+          <li class="active"><img src="img/item-1.jpg" alt="Damned, pirates are in the square" /></li>
+          <li><img src="img/item-2.jpg" alt="Light rays penetrating the forest" /></li>
+          <li><img src="img/item-3.jpg" alt="Mountains on the horizon" /></li>
+          <li><img src="img/item-4.jpg" alt="Sunset on a lake" /></li>
+        </ul>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.kslider').kslider({});
+      });
+    </script>
+  </body>
+</html>

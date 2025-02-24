@@ -1,0 +1,38 @@
+{
+  "name": "kslider",
+  "version": "1.1.0",
+  "description": "Ultra light jquery slider",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r src/index.html src/css/ src/img/ src/fonts/ dist/ & npm run js & npm run css & exit",
+    "css": "node-sass ./src/sass/kslider.scss ./dist/css/kslider.min.css --output-style compressed",
+    "js": "webpack",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --browser chrome ./cypress",
+    "start": "webpack serve"
+  },
+  "author": "Steve Lebleu",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steve-lebleu/kslider.git"
+  },
+  "keywords": [
+    "vanilla",
+    "javascript",
+    "jquery",
+    "slider",
+    "plugin"
+  ],
+  "devDependencies": {
+    "@babel/runtime": "^7.23.6",
+    "cypress": "^13.6.3",
+    "html-loader": "^5.0.0",
+    "node-sass": "^9.0.0",
+    "terser": "^5.26.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-concat-files-plugin": "^0.5.2",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

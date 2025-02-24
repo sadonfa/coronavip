@@ -2,13 +2,6 @@
 
 {% load static %}
 {# Load the tag library #}
-{% load bootstrap5 %}
-
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{% bootstrap_button content %}
 
 {% block title %} {{title}} {% endblock title %} 
 
@@ -198,20 +191,53 @@
     {% for car in cars %}
     <div class="gallery__card">
       <div class="card__img">
-        <img src="{{car.image.url}}" alt="{{car.name}}" class="card__photo">
-      </div>
+       <!-- <img src="{{car.image.url}}" alt="{{car.name}}" class="card__photo">-->
+        <div class="box">
+          <a class="demo"
+             href="{{car.image.url}}"
+             data-lightbox="title imagen">
+            <img class="example-image"
+                 src="{{car.image.url}}"
+                 alt="imagen" />
+          </a>
+        </div>
+        <div class="box">
+          <a class="demo"
+             href="{{car.image1.url}}"
+             data-lightbox="title imagen">
+            <img class="example-image"
+                 src="{{car.image1.url}}"
+                 alt="imagen" />
+          </a>
+        </div>
+        <div class="box">
+          <a class="demo"
+             href="{{car.image2.url}}"
+             data-lightbox="title imagen">
+            <img class="example-image"
+                 src="{{car.image2.url}}"
+                 alt="imagen" />
+          </a>
+        </div>
+       
+       
+
+      </div>      
+
       <div class="card__header">
-        <h2 class="card__title"> {{car.name}} </h2>
+        <h2 class="card__title"> {{car.name}} </h2> 
+        
         <div class="card__icon">
             <span class="card__passeger"><i class="card__item fa-sharp fa-solid fa-person"></i> {{car.Number_passengers}} </span>
             <span class="card__luggage"><i class="card__item fa-sharp fa-solid fa-suitcase-rolling"></i> {{car.amount_luggage}} </span>
         </div>  
       </div>    
-    <p class="card__desc">{{car.desciption}}</p> 
     </div>
     {% endfor %}
 
-  </div>
+  
+    </div>
+
 </div>
 
 
