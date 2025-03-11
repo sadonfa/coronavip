@@ -1,0 +1,93 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .cont-det-booking{
+                width: 85%;
+                margin: 0px auto;
+                padding-top: 25px;
+                padding-bottom: 80px;
+                border: 1px solid #333 ;
+                border-radius: 10px;  
+                text-align: center;
+                color: #333;
+                text-decoration: none ;
+            }
+            .cont-det-booking table {
+                width: 80%;
+                text-align: left;
+                align-items: center;
+                margin: 0px auto;
+                margin-top: 20px;
+                margin-bottom: 25px;
+                border: none;
+                color: #333333;
+              }
+
+            .cont-det-booking .det-division {
+                border: 0.5px solid #333;
+                padding-top: 1px;
+                background-color: #333;
+              }
+              .congratulations{
+                margin-bottom: 15px;
+              }
+              hr{
+                margin-top: 30px;
+                margin-bottom: 35px;
+              }
+              img{
+                width: 250px;                
+              }
+        </style>
+    </head>
+    <body>
+        <div class="cont-det-booking">
+            <img src="https://coronavip.com.co/static/img/logo.png"
+                 alt="Coronatours" />
+            <h3>Reserva # {{ nbooking }}</h3>
+            {% if tour.data.status == "APPROVED" %}<p class="aproved">Aprobado</p>{% endif %}
+            <table>
+                <tr>
+                    <td>
+                        <span>Nombres y Apellidos:</span>
+                    </td>
+                    <td class="det-celda">{{ name }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Correo:</span>
+                    </td>
+                    <td class="det-celda">{{ mail }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Observacion:</span>
+                    </td>
+                    <td class="det-celda">{{ info }}</td>
+                </tr>
+                <tr>
+                    <td class="det-division"></td>
+                    <td class="det-division"></td>
+                </tr>
+                
+            </table>
+            <span class="congratulations">¡Gracias por su observacion pronto nos contactaremos!</span>
+            <hr style="width: 50%;">
+            <p class="m-0 mbt">
+                <a href="#" style="color: #666666; text-decoration: none">Politicas de Privacidad -</a>
+                <a href="#"
+                   style="color: #666666;
+                          text-decoration: none;
+                          hover: #000000">Cookies -</a>
+                <a href="#"  style="color: #666666; text-decoration: none">Aviso Legal</a>
+            </p>
+            <p style="color: #000000;">&copy; Coronavip 2025.</p>
+        </div>
+    </body>
+</html>

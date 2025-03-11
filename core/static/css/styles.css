@@ -336,6 +336,12 @@ h6 {
   width: 90%;
 }
 
+.form__textarea {
+  outline: none;
+  background-color: white !important;
+  height: 10rem;
+}
+
 .form__header {
   display: flex;
   justify-content: space-between;
@@ -711,4 +717,42 @@ h6 {
 
 .box img {
   width: 100%;
+}
+
+/* FORMULARIO DE CONTACTOS */
+
+.contact {
+  width: 95%;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact__info {
+  width: 40%;
+  padding-top: 3rem;
+  /* border: 1px solid red; */
+}
+
+.info__data {
+  margin-top: 4rem;
+}
+
+.info__item {
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+}
+
+.info__ifram {
+  border-radius: 2.5rem;
+  box-shadow: 0 0 0.6rem var(--color-sombra);
+}
+
+.info__ico {
+  color: var(--color-primary);
+  margin-right: 1rem;
+}
+
+.contact__form {
+  width: 50%;
 }

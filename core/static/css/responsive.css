@@ -99,6 +99,16 @@
   .gallery__card {
     flex-basis: 100%;
   }
+
+  .contact {
+    flex-direction: column-reverse;
+  }
+
+  .contact__form,
+  .contact__info {
+    width: 100%;
+    margin-bottom: 4rem;
+  }
 }
 
 @media screen and (max-width: 606px) {

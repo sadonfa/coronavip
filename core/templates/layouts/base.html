@@ -96,7 +96,7 @@
                         <a href="#" class="menu__link {% if request.path == '/transporte/' %}active{% endif %}">transfer</a> 
                     </li>
                     <li class="menu__item">
-                        <a href="#" class="menu__link {% if request.path == '/contacto/' %}active{% endif %}">contacto</a>
+                        <a href="{% url 'contact' %}" class="menu__link {% if request.path == '/contacto/' %}active{% endif %}">contacto</a>
                     </li>
                 </nav>
                 
