@@ -1,51 +1,41 @@
 <!DOCTYPE html>
-{% load static %}
-
-{# Load the tag library #}
-{% load bootstrap5 %}
-{% comment %} {% load django_bootstrap5 %} {% endcomment %}
-
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-{% if 'use_i18n'|bootstrap_setting %}
-    {% load i18n %}
-    {% get_current_language as LANGUAGE_CODE %}
-{% endif %}
-
+{% load static %} {# Load the tag library #}
 
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ESTILOS GENERALES -->
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
-    <link rel="shortcut icon"
-    type="image/png"
-    href="{% static 'img/logo.png' %}" />
-    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'img/logo.png' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}" />
+    <link rel="stylesheet" href="{% static 'about.css' %}" />
 
     <!-- RESPONSIVE -->
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
 
     <!-- Estilos generales del mapa -->
-    <link rel="stylesheet"
-        type="text/css"
-        href="{% static 'css/styles_maps.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles_maps.css' %}"
+    />
 
-    <!-- FUENTES --> 
-    <link rel="stylesheet" href=" {% static 'css/fonts.css' %} ">
+    <!-- FUENTES -->
+    <link rel="stylesheet" href=" {% static 'css/fonts.css' %} " />
 
     <!-- FONTAWESOME -->
-    <link rel="stylesheet"
-        href="{% static 'fontawesome/css/fontawesome.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'fontawesome/css/fontawesome.css' %}"
+    />
     <link rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}" />
     <link rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}" />
 
@@ -55,71 +45,86 @@
       href="{% static 'lightbox/css/lightbox.min.css' %}"
     />
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />           
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
 
     <!-- SCRIPT -->
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/menu.js' %}" defer></script>
-    
-     <!-- Jquery CDN -->
-     <script
-     src="https://code.jquery.com/jquery-3.7.1.js"
-     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-     crossorigin="anonymous"
-   ></script>
-   
+
+    <!-- Jquery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
 
     <title>{% block title %}{% endblock title %}</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="fondo">
-        <div class="layout">
-            
-            <div class="layout__header">
+      <div class="layout">
+        <div class="layout__header">
+          <div class="header__logo">
+            <img src="{% static 'img/logo.png' %}" alt="Coronatours" />
+          </div>
 
-                <div class="header__logo">
-                    <img src="{% static 'img/logo.png' %}" alt="Coronatours">
-                </div>
+          <!-- Menu responsive -->
+          <div class="layout__menu-toggle">
+            <i class="menu-toggle__icon fa-solid fa-bars"></i>
+            <i class="menu-toggle__icon fa-solid fa-xmark"></i>
+          </div>
 
-                <!-- Menu responsive -->
-                <div class="layout__menu-toggle">
-                    <i class="menu-toggle__icon fa-solid fa-bars"></i>
-                    <i class="menu-toggle__icon fa-solid fa-xmark"></i>
-                </div>
-
-                <nav class="header__menu">
-                    <li class="menu__item menu__item--top"> 
-                        <a href="{% url 'home' %}" class="menu__link {% if request.path == '/inicio/' %}active{% endif %}">Home </a> 
-                    </li>   
-                    <li class="menu__item"> 
-                        <a href="#" class="menu__link {% if request.path == '/transporte/' %}active{% endif %}">transfer</a> 
-                    </li>
-                    <li class="menu__item">
-                        <a href="{% url 'contact' %}" class="menu__link {% if request.path == '/contacto/' %}active{% endif %}">contacto</a>
-                    </li>
-                </nav>
-                
-            </div>  
-
-            {% block content %}{% endblock content %} 
+          <nav class="header__menu">
+            <li class="menu__item menu__item--top">
+              <a
+                href="{% url 'home' %}"
+                class="menu__link {% if request.path == '/inicio/' %}active{% endif %}"
+                >Home
+              </a>
+            </li>
+            <li class="menu__item">
+              <a
+                href="{% url 'about' %}"
+                class="menu__link {% if request.path == '/nosotros/' %}active{% endif %}"
+                >Nosotros</a
+              >
+            </li>
+            <li class="menu__item">
+              <a
+                href="#"
+                class="menu__link {% if request.path == '/transporte/' %}active{% endif %}"
+                >transfer</a
+              >
+            </li>
+            <li class="menu__item">
+              <a
+                href="{% url 'contact' %}"
+                class="menu__link {% if request.path == '/contacto/' %}active{% endif %}"
+                >contacto</a
+              >
+            </li>
+          </nav>
         </div>
-        <footer class="layout__footer">
-            <p >&copy; Coronavip 2025.</p>
 
-        </footer>
+        {% block content %}{% endblock content %}
+      </div>
+      <footer class="layout__footer">
+        <p>&copy; Coronavip 2016.</p>
+      </footer>
     </div>
-    
 
     <!-- Invocado JavaScript -->
     <script
-        async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2fdd628K7OXK4_ojjL-n0J5aXdry-z1g&callback=initMap&libraries=places"
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2fdd628K7OXK4_ojjL-n0J5aXdry-z1g&callback=initMap&libraries=places"
     ></script>
     <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/google_maps.js' %}"></script>
-    
-
-    
-</body>
-</html>     
+    <script
+      type="text/javascript"
+      src="{% static 'js/google_maps.js' %}"
+    ></script>
+  </body>
+</html>

@@ -219,6 +219,21 @@
     font-size: 1.2rem;
     text-align: right;
   }
+
+  .layout__about {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .about__somos,
+  .about__otros {
+    width: 92%;
+    margin-left: 1rem;
+  }
+
+  .about__otros {
+    margin-left: 1rem;
+  }
 }
 
 @media screen and (max-width: 445px) {

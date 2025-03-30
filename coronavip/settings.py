@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'core',
     'transfer',
     'booking',
+    'about',
 ]
 
 MIDDLEWARE = [
